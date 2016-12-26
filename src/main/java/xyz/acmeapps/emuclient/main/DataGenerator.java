@@ -26,11 +26,17 @@ public class DataGenerator {
 		RestClient wc = new RestClient();
 		int dataIdValue = dataId.getDataId()+1;
 		Timestamp tstmp = timeStamp.getTime();
-		int randomValue = randomInt.genInt();
+		
 		System.out.println(dataIdValue);
+		list = sensorId.getSensorId();
 		
-		wc.postClient(dataIdValue, randomValue, 1, tstmp);
 		
+		
+		for(int i=0;i<list.size();i++){
+			int randomValue = randomInt.genInt();
+			wc.postClient(dataIdValue, randomValue, list.get(i), tstmp);
+			
+		}
 		
 		
 		
